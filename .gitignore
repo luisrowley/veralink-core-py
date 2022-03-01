@@ -3,3 +3,5 @@
 __pycache__/
 ./shared/__pycache__/
 ./test/__pycache__/
+*.pyc
+*.pyo
