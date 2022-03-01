@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 import cbor2
-from shared.constants import COSE_KEY, ENCODING_SCHEMA
+from shared.constants import ENCODING_SCHEMA
 from base45 import b45encode
 from cose.messages import Sign1Message
 from cose.algorithms import EdDSA
 from cose.headers import Algorithm, KID
 
 class Encoder():
-    def __init__(self, schema=ENCODING_SCHEMA):
+    def __init__(self, cose_key, schema=ENCODING_SCHEMA):
         self.schema = schema
+        self.key = cose_key
 
     """
     Signature function for CBOR structured payload
@@ -23,8 +24,7 @@ class Encoder():
             payload = cbor2.dumps(payload))
 
         # cose key from dict
-        cose_key = COSE_KEY
-        msg.key = cose_key
+        msg.key = self.key
 
         # encode function for signing automatically
         encoded = msg.encode()
