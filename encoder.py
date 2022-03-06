@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import zlib
 import cbor2
 from shared.constants import ENCODING_SCHEMA
 from base45 import b45encode
@@ -27,11 +28,18 @@ class Encoder():
         msg.key = self.key
 
         # encode function for signing automatically
-        encoded = msg.encode()
-        return encoded
+        signed_data = msg.encode()
+        return signed_data
 
     """
-    Base45 converter for compressed data payload
+    Data compression with zlib
+    """
+    def zlib_compress_data(self, signed_data):
+        compressed = zlib.compress(signed_data)
+        return compressed
+        
+    """
+    Base45 converter for bytes data payload
     """
     def base45_encode(self, bytes):
-        return 
+        return b45encode(bytes)
