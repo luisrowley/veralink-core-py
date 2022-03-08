@@ -1,5 +1,4 @@
 import json
-import cbor2
 
 class Assembler():
     def __init__(self, schema='ENCODING_SCHEMA'):
