@@ -19,7 +19,8 @@ class Decoder():
         decoded.key = self.key
         if not decoded.verify_signature():
             raise Exception("Error Code []: CBOR decode")
-        return cbor2.loads(decoded.payload)
+        else:
+            return cbor2.loads(decoded.payload)
     
     """
     Decode base45 operation
