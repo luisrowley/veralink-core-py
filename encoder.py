@@ -34,7 +34,7 @@ class Encoder():
     """
     Data compression with zlib
     """
-    def zlib_compress_data(self, signed_data):
+    def zlib_compress(self, signed_data):
         compressed = zlib.compress(signed_data)
         return compressed
         

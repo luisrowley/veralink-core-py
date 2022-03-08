@@ -3,6 +3,7 @@ from shared.constants import ENCODING_SCHEMA
 from cose.messages import CoseMessage
 from base45 import b45decode
 import cbor2
+import zlib
 
 class Decoder():
     def __init__(self, cose_key, schema=ENCODING_SCHEMA):
@@ -25,3 +26,10 @@ class Decoder():
     """
     def base45_decode(self, base_string):
         return b45decode(base_string)
+    
+    """
+    Data compression with zlib
+    """
+    def zlib_decompress(self, compressed_data):
+        decompressed = zlib.decompress(compressed_data)
+        return decompressed
