@@ -9,12 +9,12 @@ class Decoder():
     def __init__(self, cose_key, schema=ENCODING_SCHEMA):
         self.schema = schema
         self.key = cose_key
-        
-    """
-    Decode CBOR signed payload function
-        @returns deserialized object from bytestring
-    """
+
     def cbor_decode(self, signed_data):
+        """
+        Decode CBOR signed payload function
+            @returns deserialized object from bytestring
+        """
         decoded = CoseMessage.decode(signed_data)
         decoded.key = self.key
         if not decoded.verify_signature():
@@ -22,15 +22,17 @@ class Decoder():
         else:
             return cbor2.loads(decoded.payload)
     
-    """
-    Decode base45 operation
-    """
-    def base45_decode(self, base_string):
+    @classmethod
+    def base45_decode(cls, base_string):
+        """
+        Decode base45 operation
+        """
         return b45decode(base_string)
     
-    """
-    Data compression with zlib
-    """
-    def zlib_decompress(self, compressed_data):
+    @classmethod
+    def zlib_decompress(cls, compressed_data):
+        """
+        Data compression with zlib
+        """
         decompressed = zlib.decompress(compressed_data)
         return decompressed

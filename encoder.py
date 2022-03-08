@@ -12,13 +12,10 @@ class Encoder():
         self.schema = schema
         self.key = cose_key
 
-    """
-    Signature function for CBOR structured payload
-    """
     def sign_cbor_data(self, payload):
-        # message to be signed where:
-        #   phdr = protected headers
-        #   phdr = unprotected headers
+        """
+        Signature function for CBOR structured payload
+        """
         msg = Sign1Message(
             phdr = {Algorithm: EdDSA},
             uhdr = {KID: b'kid2'},
@@ -31,15 +28,17 @@ class Encoder():
         signed_data = msg.encode()
         return signed_data
 
-    """
-    Data compression with zlib
-    """
-    def zlib_compress(self, signed_data):
+    @classmethod
+    def zlib_compress(cls, signed_data):
+        """
+        Data compression with zlib
+        """
         compressed = zlib.compress(signed_data)
         return compressed
-        
-    """
-    Base45 converter for bytes data payload
-    """
-    def base45_encode(self, bytes):
+
+    @classmethod
+    def base45_encode(cls, bytes):
+        """
+        Base45 converter for bytes data payload
+        """
         return b45encode(bytes)
