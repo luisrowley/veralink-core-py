@@ -14,3 +14,5 @@ class QrGenerator():
         data = b45_payload.decode("utf-8")
         self.qr.add_data("{}{}".format(self.prefix, data))
         self.qr.make(fit=True)
+        img = self.qr.make_image(fill_color="black", back_color="white")
+        img.save('final_qr.png')
