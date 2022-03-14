@@ -33,9 +33,9 @@ class Keygen():
             KpKid: b"peregrin.took@tuckborough.example",
             KpKeyOps: [DeriveKeyOp],
             EC2KpCurve: P256,
-            EC2KpX: unhexlify(b'98f50a4ff6c05861c8860d13a638ea56c3f5ad7590bbfbf054e1c7b4d91d6280'),
-            EC2KpY: unhexlify(b'f01400b089867804b8e9fc96c3932161f1934f4223069170d924b7e03bf822bb'),
-            EC2KpD: unhexlify(b'02d1f7e6f26c43d4868d87ceb2353161740aacf1f7163647984b522a848df1c3')
+            EC2KpX: secrets.token_bytes(32),
+            EC2KpY: secrets.token_bytes(32),
+            EC2KpD: secrets.token_bytes(32)
         }
         sender_key = CoseKey.from_dict(_key)
         return sender_key
@@ -54,8 +54,8 @@ class Keygen():
             KpKid: b"meriadoc.brandybuck@buckland.example",
             KpKeyOps: [DeriveKeyOp],
             EC2KpCurve: P256,
-            EC2KpX: unhexlify(b'65eda5a12577c2bae829437fe338701a10aaa375e1bb5b5de108de439c08551d'),
-            EC2KpY: unhexlify(b'1e52ed75701163f7f9e40ddf9f341b3dc9ba860af7e0ca7ca7e9eecd0084d19c')
+            EC2KpX: secrets.token_bytes(32),
+            EC2KpY: secrets.token_bytes(32)
         }
         return CoseKey.from_dict(_key)
     
@@ -68,6 +68,6 @@ class Keygen():
             EC2KpCurve: P256,
             EC2KpX: pub_key[EC2KpX],
             EC2KpY: pub_key[EC2KpY],
-            EC2KpD: unhexlify(b'aff907c99f9ad3aae6c4cdf21122bce2bd68b5283e6907154ad911840fa208cf')
+            EC2KpD: secrets.token_bytes(32)
         }
         return CoseKey.from_dict(_key)
