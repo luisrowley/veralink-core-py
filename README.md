@@ -3,12 +3,19 @@
 Veralink-core is a Python library for dealing CBOR object encryption in an easier manner.
 
 ## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Veralink-core.
-
+1) Clone this repo:
 ```bash
-pip install Veralink-core
+git clone https://github.com/luisrowley/veralink-core-py
 ```
+2) Navigate to project folder:
+```bash
+cd veralink-core-py
+```
+3) Install project's dependencies with just:
+```bash
+python3 -m pip install -r requirements.txt
+```
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
