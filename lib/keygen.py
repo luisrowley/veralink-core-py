@@ -8,6 +8,7 @@ from cose.keys.curves import P256, Ed25519
 from cose.keys.keyops import DeriveKeyOp
 from cose.algorithms import EdDSA
 from shared.constants import KeyCurves
+import secrets
 
 class Keygen():
     @classmethod
@@ -20,14 +21,9 @@ class Keygen():
     
     @classmethod
     def sender_OKPKey_pair(cls) -> OKPKey:
-        # _key = {
-        #     KpKty: KtyOKP,
-        #     OKPKpCurve: Ed25519,
-        #     KpAlg: EdDSA,
-        #     OKPKpD: unhexlify(b'02d1f7e6f26c43d4868d87ceb2353161740aacf1f7163647984b522a848df1c3')
-        # }
-        private_key = unhexlify(b'000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f')
-        sender_key = OKPKey(crv='ED25519', d=private_key, optional_params={'ALG': 'EDDSA'})
+        private_key = secrets.token_bytes(32)
+        public_key = secrets.token_bytes(32)
+        sender_key = OKPKey(crv='ED25519', d=private_key, x=public_key, optional_params={'ALG': 'EDDSA'})
         return sender_key
 
     @classmethod

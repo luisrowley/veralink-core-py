@@ -18,7 +18,7 @@ class Decoder():
         """
         decoded = CoseMessage.decode(signed_data)
         decoded.key = self.key
-        print(hexlify(decoded.key.x))
+        print(decoded.verify_signature())
         if not decoded.verify_signature():
             raise Exception("Error Code []: CBOR decode")
         else:
