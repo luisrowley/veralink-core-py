@@ -1,6 +1,6 @@
 # veralink-core-py
 
-Veralink-core is a Python library for dealing CBOR object encryption in an easier manner.
+Veralink-core is a Python library for signing CBOR objects in an easier manner.
 
 ## Installation
 1) Clone this repo:
