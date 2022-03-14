@@ -48,16 +48,3 @@ if __name__ == "__main__":
     # print result
     print(decoded)
 
-    # payload = Assembler.obj_to_bytestring(CBOR_PAYLOAD)
-    # sender_pub_key = Keygen.get_sender_public_EC2Key(cose_key)
-    # recipient_pub_key = Keygen.get_recipient_public_EC2Key()
-    # encoder = Encoder(cose_key)
-    # recipient = encoder.get_DKA_recipient(sender_pub_key, recipient_pub_key)
-    # enc_message = encoder.encrypt_message(recipient, payload)
-    # print(enc_message)
-
-    # recipient_key_pair = Keygen.recipient_EC2Key_pair(recipient_pub_key)
-    # print('key ::: ', hexlify(recipient_key_pair.x))
-    # print('msg ::: ', enc_message)
-    # decoded = Decoder.decode_message(unhexlify(enc_message), recipient_key_pair)
-    # print(Assembler.bytestring_to_obj(decoded))
